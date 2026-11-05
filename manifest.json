@@ -1,0 +1,17 @@
+{
+  "name": "JW Dual Parallel Reader",
+  "short_name": "JW Dual",
+  "description": "Приватный параллельный браузер для работы с сайтом jw.org в двух окнах",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#1e293b",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231e293b'/><rect x='10' y='18' width='37' height='64' rx='6' fill='%2338bdf8' opacity='0.9'/><rect x='53' y='18' width='37' height='64' rx='6' fill='%23818cf8' opacity='0.9'/><path d='M22 36h13M22 46h13M22 56h8' stroke='%230f172a' stroke-width='3' stroke-linecap='round'/><path d='M65 36h13M65 46h13M65 56h8' stroke='%230f172a' stroke-width='3' stroke-linecap='round'/></svg>",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

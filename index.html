@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  
+  <!-- Apple & PWA Meta Tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="JW Dual" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="manifest" href="manifest.json" />
+  
+  <title>JW Dual Parallel Reader — Приватный параллельный браузер</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Ambient Glow Backgrounds -->
+  <div class="bg-glow-1"></div>
+  <div class="bg-glow-2"></div>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="brand-section">
+      <div class="brand-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="18" rx="3"></rect>
+          <line x1="12" y1="3" x2="12" y2="21"></line>
+        </svg>
+      </div>
+      <div class="brand-title">
+        JW Dual <span class="brand-badge">Private</span>
+      </div>
+    </div>
+
+    <!-- Quick Presets -->
+    <div class="presets-toolbar">
+      <button class="preset-chip active" data-preset="daily-text">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        Стих на день
+      </button>
+      <button class="preset-chip" data-preset="bible">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Библия (NWT)
+      </button>
+      <button class="preset-chip" data-preset="watchtower">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Сторожевая башня
+      </button>
+      <button class="preset-chip" data-preset="workbook">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/></svg>
+        Рабочая тетрадь
+      </button>
+      <button class="preset-chip" data-preset="wol">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Библиотека WOL
+      </button>
+    </div>
+
+    <!-- Actions -->
+    <div class="header-actions">
+      <button class="icon-btn" id="btnBookmarks" title="Закладки">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19 21-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+      </button>
+      <button class="icon-btn" id="btnHelp" title="Инструкция для iPad">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </button>
+      <button class="icon-btn" id="btnTheme" title="Тема оформления">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Quick Action & Parallel Launch Bar -->
+  <div class="action-banner">
+    <div class="banner-left">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+      <span>Двухоконный режим: параллельное чтение двух языковых версий</span>
+    </div>
+    <div class="banner-buttons">
+      <button class="btn-sync-toggle" id="btnSyncToggle" title="Синхронизировать перемещение по разделам">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+        Синхронизация: ВКЛ
+      </button>
+      <button class="btn-open-both" id="btnOpenBoth" title="Запустить два независимых окна (на ПК раскладывает 50/50, на iPad открывает для Split View)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Открыть оба окна
+      </button>
+    </div>
+  </div>
+
+  <!-- Dual Workspace -->
+  <main class="dual-container" id="dualContainer">
+    
+    <!-- Left Pane -->
+    <section class="pane pane-left" id="paneLeft">
+      <div class="pane-toolbar">
+        <select class="lang-select-pill" id="langLeft" title="Язык левого окна">
+          <option value="uk" selected>🇺🇦 Українська</option>
+          <option value="ru">🇷🇺 Русский</option>
+          <option value="en">🇬🇧 English</option>
+        </select>
+        <div class="url-input-wrapper">
+          <input type="text" class="url-input" id="urlLeft" value="https://www.jw.org/uk/бібліотека/щоденний-текст/" />
+        </div>
+        <button class="pane-action-btn" id="btnReloadLeft" title="Обновить">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+        </button>
+        <button class="pane-action-btn" id="btnOpenLeft" title="Открыть отдельно">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </button>
+      </div>
+
+      <div class="frame-wrapper">
+        <iframe id="iframeLeft" class="browser-frame" src="https://www.jw.org/uk/бібліотека/щоденний-текст/"></iframe>
+        <div class="frame-notice" id="noticeLeft">
+          <div class="notice-card">
+            <div class="notice-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </div>
+            <div class="notice-title" id="noticeTitleLeft">Левое окно (Українська)</div>
+            <p class="notice-desc">Прямое подключение к серверу jw.org. Нажмите кнопку ниже, чтобы мгновенно открыть этот раздел:</p>
+            <a href="https://www.jw.org/uk/бібліотека/щоденний-текст/" target="_blank" class="btn-open-single" id="btnDirectLeft">
+              Открыть левое окно ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Draggable Split Divider -->
+    <div class="split-divider" id="splitDivider">
+      <div class="split-divider-handle"></div>
+    </div>
+
+    <!-- Right Pane -->
+    <section class="pane pane-right" id="paneRight">
+      <div class="pane-toolbar">
+        <select class="lang-select-pill" id="langRight" title="Язык правого окна">
+          <option value="ru" selected>🇷🇺 Русский</option>
+          <option value="uk">🇺🇦 Українська</option>
+          <option value="en">🇬🇧 English</option>
+        </select>
+        <div class="url-input-wrapper">
+          <input type="text" class="url-input" id="urlRight" value="https://www.jw.org/ru/библиотека/стих-на-день/" />
+        </div>
+        <button class="pane-action-btn" id="btnReloadRight" title="Обновить">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+        </button>
+        <button class="pane-action-btn" id="btnOpenRight" title="Открыть отдельно">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </button>
+      </div>
+
+      <div class="frame-wrapper">
+        <iframe id="iframeRight" class="browser-frame" src="https://www.jw.org/ru/библиотека/стих-на-день/"></iframe>
+        <div class="frame-notice" id="noticeRight">
+          <div class="notice-card">
+            <div class="notice-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </div>
+            <div class="notice-title" id="noticeTitleRight">Правое окно (Русский)</div>
+            <p class="notice-desc">Прямое подключение к серверу jw.org. Нажмите кнопку ниже, чтобы мгновенно открыть этот раздел:</p>
+            <a href="https://www.jw.org/ru/библиотека/стих-на-день/" target="_blank" class="btn-open-single" id="btnDirectRight">
+              Открыть правое окно ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Help & iPad Instructions Modal -->
+  <div class="modal-overlay" id="helpModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Как пользоваться на iPad и компьютере</h3>
+        <button class="icon-btn" id="btnCloseHelp">✕</button>
+      </div>
+      <div style="font-size: 0.9rem; line-height: 1.6; color: var(--text-muted); display: flex; flex-direction: column; gap: 14px;">
+        <p><strong>1. На iPad Pro (Split View):</strong><br/>
+        Нажмите кнопку <em>«Открыть оба окна»</em>. На iPad откроются две параллельные вкладки. Нажмите три точки (<code>...</code>) вверху экрана iPad и выберите <strong>Split View</strong>. Экран разделится на две равные половины, и iPadOS навсегда сохранит эту пару!</p>
+        
+        <p><strong>2. На компьютере (Mac / Windows):</strong><br/>
+        При нажатии <em>«Открыть оба окна»</em> браузер аккуратно развернёт два независимых окна 50/50 слева и справа без лишних панелей.</p>
+
+        <p><strong>3. Полная приватность:</strong><br/>
+        Приложение не передаёт никаких данных сторонним серверам, не использует аналитику и работает напрямую только с официальным сайтом <code>jw.org</code>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bookmarks Modal -->
+  <div class="modal-overlay" id="bookmarksModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Сохранённые материалы</h3>
+        <button class="icon-btn" id="btnCloseBookmarks">✕</button>
+      </div>
+      <div class="modal-list" id="bookmarksList">
+        <!-- Rendered by JS -->
+      </div>
+      <div style="margin-top: 16px; display: flex; gap: 8px;">
+        <input type="text" id="newBookmarkTitle" placeholder="Название закладки" class="url-input" style="background: var(--surface-alt); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-color);" />
+        <button class="btn-open-both" id="btnAddBookmark" style="white-space: nowrap;">Сохранить текущие окна</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
